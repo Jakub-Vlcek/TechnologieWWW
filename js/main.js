@@ -150,7 +150,6 @@ buttonSubmit.onclick = function () {
                 printArray(state.timezones, "state_timezones");
 
                 // zobrazeni tlacitka pro odebrani z oblibenych
-                console.log(favouritesArray.includes(state.name));
                 if (favouritesArray.includes(state.name)) {
                     button_favouritesRemove.style.display = 'inline';
                     button_favouritesRemove.disabled = 0;
