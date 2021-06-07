@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link href="css/moje-css.css" rel="stylesheet">
+    <title>Závěrečný projekt</title>
+</head>
+
+<body>
+    <script src="js/main.js" async defer></script>
+
+    <div class="header-background" id="domu">
+        <div class="sticky-nav" id="nav">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#domu">Domů</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#oblibene">Oblíbené</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#historie">Historie</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#kontakt">Kontakt</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container col-md-5">
+            <h1 class="navbar-brand">Evropské země</h1>
+
+            <div class="input-group mb-3 heading ">
+                <input type="search" class="form-control mr-sm-2" placeholder="Zadejte zemi" id="zeme"
+                    aria-label="Zadejte zemi">
+                <button class="btn btn-outline-secondary mr-sm-2" type="button" id="submitButton">Vyhledat</button>
+            </div>
+
+            <div id="notFoundAlert" style="display: none;">
+                <div class="alert alert-danger" role="alert">
+                    Došlo k chybě. Nebyl nalezen žádný výsledek.
+                </div>
+            </div>
+
+            <div id="moreResultAlert" style="display: none;">
+                <div class="alert alert-warning" role="alert">
+                    <p>Bylo nalezeno více výsledků. Upřesněte prosím hledaný výraz.</p> <br>
+
+                    <p><strong>Možné varianty:</strong></p>
+                    <ul id="moreResults" class="activeList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container content">
+        <div class="container" id="vysledek" style="display: none;">
+
+            <div class="row d-flex justify-content-around">
+
+                <div class="col-xs-12 col-sm-5 col-lg-5 pl-5 pb-5">
+                    <h1 class="section-title" id="state_nativeName"></h1>
+                    <h2 id="state_name"></h2>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-lg-3 pl-5 pb-5">
+                    <img src="" alt="flag" id="state_flag">
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-lg-5 pl-5">
+                    <h3>Zkratky:</h3>
+                    <ul>
+                        <li id="state_code"></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-lg-3 pl-5">
+                    <h3>Kontinent:</h3>
+                    <ul>
+                        <li id="state_region"></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-lg-5 pl-5">
+                    <h3>Hlavní město:</h3>
+                    <ul>
+                        <li id="state_capital"></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-lg-3 pl-5">
+                    <h3>Rozloha:</h3>
+                    <ul>
+                        <li id="state_area"></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-lg-5 pl-5">
+                    <h3>Měna:</h3>
+                    <ul>
+                        <li id="state_currency"></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-lg-3 pl-5">
+                    <h3>Počet obyvatel:</h3>
+                    <ul>
+                        <li id="state_population"></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-lg-5 pl-5">
+                    <h3>Sousední státy:</h3>
+                    <ul id="state_borders"></ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-lg-3 pl-5">
+                    <h3>Časová pásma:</h3>
+                    <ul id="state_timezones"></ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-lg-5 pl-5">
+                    <h3>Jazyky:</h3>
+                    <ul>
+                        <li id="state_languages"></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-lg-3 pl-5">
+                    <h3>Doména:</h3>
+                    <ul id="state_domain"></ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-5 col-lg-5 pl-5">
+                    <h3>Předvolba:</h3>
+                    <ul id="state_calling"></ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-lg-3 pl-5">
+                    <h3>Člen:</h3>
+                    <ul>
+                        <li id="state_regionalBlocs"></li>
+                    </ul>
+                </div>
+
+
+                <div class="container col-md-5 my-5">
+                    <div class="row justify-content-center">
+                        <div class="col-xs-12 col-sm-6 col-lg-6 text-center d-grid my-1">
+                            <button class="btn btn-outline-secondary" type="button" id="button_favourites">
+                                Přidat do oblíbených
+                            </button>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-lg-6 text-center d-grid my-1">
+                            <button class="btn btn-outline-secondary " type="button" id="button_favouritesRemove">
+                                Odebrat z oblíbených
+                            </button>
+                        </div>
+
+                        <div id="alredyExistAlert" style="display: none;">
+                            <div class="alert alert-danger my-5 py-4" role="alert">
+                                Tato země již je v seznamu oblíbených.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" id="oblibene">
+
+            <div class="row">
+                <h1 class="mt-5 pt-3 mb-3">Oblíbené položky</h1>
+
+                <div class="row">
+                    <ul id="favouritesInput" class="list-group list-unstyled activeList grid-list2"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="historie">
+            <div class="row">
+                <h1 class="mt-5 pt-3 mb-3">Historie vyhledávání</h1>
+
+                <div class="row">
+                    <ul id="historyInput" class="list-group list-unstyled activeList grid-list3"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="kontakt">
+            <div class="row justify-content-center">
+                <h1 class="mt-5 pt-3 mb-3">Kontakt</h1>
+                <div class="popis ">
+                    <p>
+                        Tato stránka vznikla jako závěrečná práce z předmětu Technologie WWW oboru Softwarové
+                        Inženýrství na
+                        FAI UTB ve Zlíně.
+                    </p>
+                    <p>
+                        Cílem této stránky je umožnit uživateli zjistit základní informace o dané zemi. Stačí zadat
+                        název
+                        státu do vyhledávacího pole a zjistíte informace. Místa je možné přidat do oblíbených a opět
+                        odebrat. Je možné také vidět naposledy zobrazená vyhledávání v sekci historie. Jak v sekci
+                        oblíbené, tak i v
+                        historii jsou názvy měst funční jako odkazy k prokliknutí na informace o dané zemi. Je využito
+                        Rest API, které zahrnuje státy Evropy
+                        a i některé světové státy (pokrytí mimoevropských států není 100% a může se stát, že budou
+                        některá data chybět).
+                    </p>
+                    <div class="row justify-content-start">
+                        <div class="col-xs-12 col-sm-5 col-lg-5 pl-5 pb-5 ">
+                            <dl>
+                                <dt>Autor:</dt>
+                                <dd><em>Jakub Vlček</em></dd>
+                                <dt>E-mail:</dt>
+                                <dd>
+                                    <address><em><a href="mailto:j_vlcek@utb.cz">j_vlcek@utb.cz </a></em></address>
+                                </dd>
+
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <em>2021</em>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+        </script>
+    <script src="js/bootstrap.js"></script>
+
+</body>
+
+</html>
