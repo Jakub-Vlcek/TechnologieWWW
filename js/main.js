@@ -150,8 +150,12 @@ buttonSubmit.onclick = function () {
                 printArray(state.timezones, "state_timezones");
 
                 // zobrazeni tlacitka pro odebrani z oblibenych
+                console.log(favouritesArray.includes(state.name));
                 if (favouritesArray.includes(state.name)) {
                     button_favouritesRemove.style.display = 'inline';
+                    button_favouritesRemove.disabled = 0;
+                }else{
+                    button_favouritesRemove.disabled = 1;
                 }
 
                 //zobrazeni vysledku hledani a presunuti se na nej
@@ -188,6 +192,7 @@ buttonSubmit.onclick = function () {
 
 // funkce pro pridani do oblibenych
 button_favourites.onclick = function () {
+
 
     // nastaveni tlacitka pro odebrani z oblibenych na disabled
     button_favouritesRemove.disabled = 0;
@@ -235,7 +240,7 @@ button_favouritesRemove.onclick = function () {
     alredyExistAlert.style.display = 'none';
     button_favouritesRemove.disabled = 'true';
 
-    // pokud je polozka v poli oblibenych, pak ji bude moyne odstranit
+    // pokud je polozka v poli oblibenych, pak ji bude mozne odstranit
     if (favouritesArray.indexOf(state_name.innerHTML) >= 0) {
 
         // odstraneni polozky z pole
